@@ -1,0 +1,102 @@
+$colors: rgb(26, 25, 25);
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+}
+
+.container {
+  margin-top: 60px;
+  max-height: 30vh;
+  position: relative;
+  scroll-snap-type: y mandatory;
+  -webkit-overflow-scrolling: touch;
+}
+
+.headline {
+  align-items: center;
+  background-color: var(--color);
+  display: flex;
+  font-weight: 700;
+  font-size: calc(1rem + 15vmin);
+  height: 130vh;
+  justify-content: center;
+  perspective: 1000px;
+  width: 100vw;
+  
+  @for $i from 1 through length($colors) {
+    &:nth-child(#{$i}) {
+      --color: #{nth($colors, $i)};
+    }
+  }
+}
+
+.word,
+.char {
+  animation-delay: var(--del);
+  animation-direction: var(--dir, normal);
+  animation-duration: var(--dur);
+  animation-iteration-count: var(--it, infinite);
+  animation-name: var(--name);
+  animation-timing-function: var(--tf);
+  animation-fill-mode: var(--fill, forwards);
+  display: inline-block;
+  position: relative;
+  transform-origin: 50% 100%;
+  z-index: 1;
+}
+
+
+// =========================
+// Headline animations
+// =========================
+
+
+.headline--float {
+  .char {
+    --name: float;
+    --dur: 2200ms;
+    --del: calc(var(--char-index) * -0.5s);
+    --tf: ease-in-out; 
+    --dir: alternate;
+    
+    &:nth-child(2n) {
+      --name: float-alt;
+    }
+  }
+  
+  @keyframes float {
+    from {
+      transform: translate(2%, -10%) rotate(-1deg);
+    }
+    to {
+      transform: translate(-2%, 5%) rotate(3deg);
+    }
+  }
+
+  @keyframes float-alt {
+    from {
+      transform: translate(0%, -5%) rotate(-1deg);
+    }
+    to {
+      transform: translate(2%, 10%) rotate(3deg);
+    }
+  }
+}
+
+#mainview{
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.subtext {
+  font-weight: 700;
+  font-size: calc(0.3rem + 3vmin);
+  text-align: center;
+}

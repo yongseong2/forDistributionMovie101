@@ -1,0 +1,73 @@
+.ordered-nav {
+  position: relative;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: block;
+  
+  &::before {
+    // Vertical line that connects all of the pages listed in the ordered nav
+    content: '';
+    position: absolute;
+    z-index: -1;
+
+    left: 6px;
+    top: 8px;
+    bottom: 16px;
+
+    width: 3px;
+    background-color: #ecf2f7;
+  }
+
+  &--link {
+    padding-left: 1.5rem;
+    margin: 2rem 0;
+    position: relative;
+
+    &::before {
+      // Circular icon beside the ordered nav link
+      content: '';
+      position: absolute;
+
+      top: calc(50% - 6px);
+      left: 0;
+      width: 9px;
+      height: 9px;
+
+      background-color: white;
+      border-color: #2d2e2e;
+      border-width: 3px;
+      border-style: solid;
+      border-radius: 50%;
+    }
+
+    &:first-child {
+      margin-top: 0;
+
+      &::before {
+        top: 2px;
+      }
+    }
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    &__active {
+      & .tx-link {
+        color: white;
+      }
+
+      &::before {
+        background-color: #27A4FC;
+      }
+    }
+  }
+}
+
+.tx-link {
+
+  color: #A5E2FD;
+  text-decoration: underline;
+  text-underline-position: under;
+}
