@@ -10,7 +10,11 @@ module.exports = defineConfig({
   },
   devServer: {
     port: 80,
-    disableHostCheck: true
+    client: {
+      webSocketURL: {
+        hostname: 'movie101.site', // or your domain
+      }
+    }
   }
 })
 
