@@ -7,6 +7,9 @@ module.exports = defineConfig({
         additionalData: `@import "@/assets/main.scss";`
       }
     }
+  },
+  devServer: {
+    port: 80
   }
 })
 
