@@ -9,7 +9,8 @@ module.exports = defineConfig({
     }
   },
   devServer: {
-    port: 80
+    port: 80,
+    disableHostCheck: true
   }
 })
 
